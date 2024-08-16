@@ -1,4 +1,4 @@
-package org.example.e97;
+package example.e97;
 
 import java.util.Scanner;
 

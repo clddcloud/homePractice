@@ -1,4 +1,4 @@
-package org.example.e99;
+package example.e99;
 
 import java.util.Scanner;
 
