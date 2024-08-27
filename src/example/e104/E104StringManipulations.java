@@ -1,4 +1,4 @@
-package example.e104;
+package org.example.e104;
 
 import java.util.Scanner;
 
@@ -12,15 +12,11 @@ public class E104StringManipulations {
         }
         for (int i = 0; i < names.length; i++) {
             if (names[i].length()>=3) {
-                for (int j = 0; j < 3; j++) {
-                    System.out.print(names[i].charAt(j));
-                }
+                System.out.println(names[i].substring(0, 3));
             } else{
-                System.out.print(names[i]);
+                System.out.println(names[i]);
             }
-            System.out.println();
-       }
-
+        }
         input.close();
     }
 
