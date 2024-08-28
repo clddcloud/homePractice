@@ -1,8 +1,7 @@
-package example.e140;
+package org.example.e140;
 
 public class E140AccessModifiers {
-    String maxLength (String s){
-        String [] words=s.split("[ ,.?!:;()]");
+   private String maxLength (String [] words){
         int max=words[0].length();
         int index=0;
         for (int i = 1; i < words.length; i++) {
@@ -15,8 +14,10 @@ public class E140AccessModifiers {
     }
     public static void main(String[] args) {
         E140AccessModifiers obj=new E140AccessModifiers();
-        String str;
-        str=obj.maxLength("this is (actually) longest!");
-        System.out.println(str);
+        String [] words={"this", "is", "a", "long", "word"};
+        System.out.println(obj.maxLength(words));
+        String [] words2 ={"java", "programming", "is", "fun"};
+        System.out.println(obj.maxLength(words2));
     }
+
 }
