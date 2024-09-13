@@ -1,7 +1,4 @@
-package org.example.e199;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+package example.e199;
 
 public class E199Exceptions {
 

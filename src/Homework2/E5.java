@@ -14,9 +14,14 @@ public class E5 {
                     if (str1.charAt(i)==str2.charAt(j)){
                         count++;
                     }
+                    // check for duplicate counts of letters (if there are 2 or more same letters in the word)
+                    if (i!=j && str1.charAt(i)==str1.charAt(j)){
+                        count--;
+                    }
                 }
             }
         }
+
         if (count==str1.length() && count!=0){
             System.out.println("Words: '"+str1+"' & '" +str2+"' are anagrams. True");
         } else {
