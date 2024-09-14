@@ -8,32 +8,28 @@ public class E5 {
 
         // another much better approach below
 
-        String str1 = "listen_silent_silsil";
-        String str2 = "silent_listen_lislis";
+        String str1 = "listen_silent_SilSil";
+        String str2 = "silent_listen_LisLis";
         int count = 0;
         int doubeLetterCountStr1 = 0;
         int doubeLetterCountStr2 = 0;
         if (str1.length() == str2.length()) {
-            int sum1=0;
-            int sum2=0;
             for (int i = 0; i < str1.length(); i++) {
                 for (int j = 0; j < str2.length(); j++) {
-                    if (str1.charAt(i) == str2.charAt(j)) {
+                    if (str1.toLowerCase().charAt(i) == str2.toLowerCase().charAt(j)) {
                         count++;
                     }
                     // check for duplicate counts of letters (if there are 2 or more same letters in the word)
                     // this solution works for strings that have many double/treble letters and that are not the same in both strings
-                    if (i != j && str1.charAt(i) == str1.charAt(j)) {
+                    if (i != j && str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)) {
                         count--;
                         doubeLetterCountStr1++;
                     }
-                    if (i != j && str2.charAt(i) == str2.charAt(j)) {
+                    if (i != j && str2.toLowerCase().charAt(i) == str2.toLowerCase().charAt(j)) {
                         doubeLetterCountStr2++;
                     }
                 }
             }
-            System.out.println(sum1);
-            System.out.println(sum2);
             if (count == str1.length() && count != 0 && doubeLetterCountStr1 == doubeLetterCountStr2) {
                 System.out.println("Words: '" + str1 + "' & '" + str2 + "' are anagrams. True");
             } else {
@@ -45,9 +41,9 @@ public class E5 {
 
             boolean cond=false;
             if (str1.length() == str2.length()) {
-                String str2tmp=str2;
+                String str2tmp=str2.toLowerCase();
                 for (int i = 0; i < str1.length(); i++) {
-                    char currentChar = str1.charAt(i);
+                    char currentChar = str1.toLowerCase().charAt(i);
                     int indexInStr2 = str2tmp.indexOf(currentChar);
                        if (indexInStr2 >= 0) {
                        str2tmp = str2tmp.replaceFirst(String.valueOf(currentChar),"");
