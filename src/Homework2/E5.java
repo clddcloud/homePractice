@@ -6,59 +6,48 @@ public class E5 {
         // Given two strings, determine if they are anagrams, meaning they contain the same characters in a different order.
         // For example, "listen" and "silent" are anagrams.
 
-        // another much better approach below
 
         String str1 = "listen_silent_SilSil10";
         String str2 = "silent_listen_LisLis01";
-        int count = 0;
+
+        // approach 1. the idea here is to count the unique letters and their number in string 1 and compare them with string 2
         boolean condition=false;
-        int falseCondition=0;
         if (str1.equals(str2)){
             condition=true;
         } else if (str1.length() == str2.length()) {
             for (int i = 0; i < str1.length(); i++) {
-               int doubeLetterCountStr1 = 0;
-               int doubeLetterCountStr2 = 0;
-               char doubleLetter='\u0000'; //null symbol for char
+               int letterCountStr1 = 0;
+               int letterCountStr2 = 0;
+               char letter=str1.toLowerCase().charAt(i);
                for (int j = 0; j < str2.length(); j++) {
-                    // we find if there are the same letters in the second string
-                    if (str1.toLowerCase().charAt(i) == str2.toLowerCase().charAt(j)) {
-                        count++;
-                    }
-                    // check for duplicate counts of letters (if there are 2 or more same letters in the word)
-                    // this solution works for strings that have many double/treble letters and that might not the same in both strings
+                    // we find how many same letters we have in string1
                     if (str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)) {
-                        // in case we find a double letter in the string 1
-                        doubeLetterCountStr1++;
-                        doubleLetter= str1.toLowerCase().charAt(i);
-                        if (i!=j){
-                            count--;
-                        }
+                        letterCountStr1++;
                     }
                 }
                 // find how many duplicates of that letter we also have in string2
                 for (int k = 0; k < str2.length(); k++) {
-                    if (str2.toLowerCase().charAt(k)==doubleLetter){
-                        doubeLetterCountStr2++;
+                    if (str2.toLowerCase().charAt(k)==letter){
+                        letterCountStr2++;
                     }
                 }
-                // check if number of duplicate letter is the same
-                if (doubeLetterCountStr1==doubeLetterCountStr2 && falseCondition==0){
+                // check if number of the letter is the same
+                if (letterCountStr1==letterCountStr2){
                     condition=true;
                 } else {
                     condition=false;
-                    falseCondition++; // check if condition was false at least once. then the overall condition will be false
+                    break;
                 }
             }
         }
-            if (count == str1.length() && condition) {
+            if (condition) {
                 System.out.println("Words: '" + str1 + "' & '" + str2 + "' are anagrams. True");
             } else {
                 System.out.println("They are NOT anagrams. False");
             }
 
 
-            // Another option with more neat code and straight-forward logic:
+            // Approach 2 with more neat code and straight-forward logic:
 
             boolean cond=false;
             if (str1.length() == str2.length()) {
