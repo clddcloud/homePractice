@@ -8,29 +8,48 @@ public class E5 {
 
         // another much better approach below
 
-        String str1 = "listen_silent_SilSil";
-        String str2 = "silent_listen_LisLis";
+        String str1 = "listen_silent_SilSil10";
+        String str2 = "silent_listen_LisLis01";
         int count = 0;
-        int doubeLetterCountStr1 = 0;
-        int doubeLetterCountStr2 = 0;
+        boolean condition=false;
+        int falseCondition=0;
         if (str1.length() == str2.length()) {
             for (int i = 0; i < str1.length(); i++) {
-                for (int j = 0; j < str2.length(); j++) {
+               int doubeLetterCountStr1 = 0;
+               int doubeLetterCountStr2 = 0;
+               char doubleLetter='\u0000'; //null symbol for char
+               for (int j = 0; j < str2.length(); j++) {
+                    // we find if there are the same letters in the second string
                     if (str1.toLowerCase().charAt(i) == str2.toLowerCase().charAt(j)) {
                         count++;
                     }
                     // check for duplicate counts of letters (if there are 2 or more same letters in the word)
-                    // this solution works for strings that have many double/treble letters and that are not the same in both strings
+                    // this solution works for strings that have many double/treble letters and that might not the same in both strings
                     if (i != j && str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)) {
+                        // in case we find a double letter in the string 1
                         count--;
                         doubeLetterCountStr1++;
+                        doubleLetter= str1.toLowerCase().charAt(i);
+                    } else if (i == j && str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)){
+                        doubeLetterCountStr1++;
+                        doubleLetter= str1.toLowerCase().charAt(i);
                     }
-                    if (i != j && str2.toLowerCase().charAt(i) == str2.toLowerCase().charAt(j)) {
+                }
+                // find how many duplicates of that letter we also have in string2
+                for (int k = 0; k < str2.length(); k++) {
+                    if (str2.toLowerCase().charAt(k)==doubleLetter){
                         doubeLetterCountStr2++;
                     }
                 }
+                // check if number of duplicate letter is the same
+                if (doubeLetterCountStr1==doubeLetterCountStr2 && falseCondition==0){
+                    condition=true;
+                } else {
+                    condition=false;
+                    falseCondition++; // check if condition was false at least once. then the overall condition will be false
+                }
             }
-            if (count == str1.length() && count != 0 && doubeLetterCountStr1 == doubeLetterCountStr2) {
+            if (count == str1.length() && count != 0 && condition) {
                 System.out.println("Words: '" + str1 + "' & '" + str2 + "' are anagrams. True");
             } else {
                 System.out.println("They are NOT anagrams. False");
