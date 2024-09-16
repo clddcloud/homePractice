@@ -13,7 +13,9 @@ public class E5 {
         int count = 0;
         boolean condition=false;
         int falseCondition=0;
-        if (str1.length() == str2.length()) {
+        if (str1.equals(str2)){
+            condition=true;
+        } else if (str1.length() == str2.length()) {
             for (int i = 0; i < str1.length(); i++) {
                int doubeLetterCountStr1 = 0;
                int doubeLetterCountStr2 = 0;
@@ -48,7 +50,8 @@ public class E5 {
                     falseCondition++; // check if condition was false at least once. then the overall condition will be false
                 }
             }
-            if (count == str1.length() && count != 0 && condition) {
+        }
+            if (count == str1.length() && condition) {
                 System.out.println("Words: '" + str1 + "' & '" + str2 + "' are anagrams. True");
             } else {
                 System.out.println("They are NOT anagrams. False");
@@ -76,5 +79,5 @@ public class E5 {
             }
         }
     }
-        }
+
 
