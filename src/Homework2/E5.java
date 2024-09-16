@@ -21,7 +21,7 @@ public class E5 {
                char letter=str1.toLowerCase().charAt(i);
                for (int j = 0; j < str2.length(); j++) {
                     // we find how many same letters we have in string1
-                    if (str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)) {
+                    if (str1.toLowerCase().charAt(j)==letter) {
                         letterCountStr1++;
                     }
                 }
