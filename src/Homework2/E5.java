@@ -25,14 +25,13 @@ public class E5 {
                     }
                     // check for duplicate counts of letters (if there are 2 or more same letters in the word)
                     // this solution works for strings that have many double/treble letters and that might not the same in both strings
-                    if (i != j && str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)) {
+                    if (str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)) {
                         // in case we find a double letter in the string 1
-                        count--;
                         doubeLetterCountStr1++;
                         doubleLetter= str1.toLowerCase().charAt(i);
-                    } else if (i == j && str1.toLowerCase().charAt(i) == str1.toLowerCase().charAt(j)){
-                        doubeLetterCountStr1++;
-                        doubleLetter= str1.toLowerCase().charAt(i);
+                        if (i!=j){
+                            count--;
+                        }
                     }
                 }
                 // find how many duplicates of that letter we also have in string2
